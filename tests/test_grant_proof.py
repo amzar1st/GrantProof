@@ -89,9 +89,9 @@ class GrantTests(unittest.TestCase):
  def test_fetch_failure_no_builder_payment(self):
   self.evidence();self.now=1060;self.c.validator_review('g');self.assertEqual(self.state()['decision']['verdict'],'INSUFFICIENT_EVIDENCE');self.assertEqual(self.c.get_credit(B),'0')
  def test_hash_mismatch_no_builder_payment(self):
-  self.accept();self.c.submit_milestone('g','Delivered');self.c.submit_evidence('g','https://example.org/beta','0'*64,'Mismatch');fake.Web.responses['https://example.org/beta']=types.SimpleNamespace(body=b'real bytes',status_code=200);self.now=1060;self.c.validator_review('g');self.assertEqual(self.state()['decision']['checks'][0]['status'],'HASH_MISMATCH');self.assertEqual(self.c.get_credit(B),'0')
+  self.accept();self.c.submit_milestone('g','Delivered');self.c.submit_evidence('g','https://example.org/beta','0'*64,'Mismatch');fake.Web.responses['https://example.org/beta']=types.SimpleNamespace(body=b'real bytes',status=200);self.now=1060;self.c.validator_review('g');self.assertEqual(self.state()['decision']['checks'][0]['status'],'HASH_MISMATCH');self.assertEqual(self.c.get_credit(B),'0')
  def test_funder_fetch_failure_does_not_veto_builder(self):
-  self.evidence();self.sender(F);self.c.submit_evidence('g','https://example.org/fail','','');fake.Web.responses['https://example.org/beta']=types.SimpleNamespace(body=b'working beta and documentation',status_code=200);fake.Nondet.output=self.decision();self.now=1060;self.c.validator_review('g');self.now=1120;self.c.finalize('g');self.assertEqual(self.c.get_credit(B),'101');self.invariant()
+  self.evidence();self.sender(F);self.c.submit_evidence('g','https://example.org/fail','','');fake.Web.responses['https://example.org/beta']=types.SimpleNamespace(body=b'working beta and documentation',status=200);fake.Nondet.output=self.decision();self.now=1060;self.c.validator_review('g');self.now=1120;self.c.finalize('g');self.assertEqual(self.c.get_credit(B),'101');self.invariant()
  def test_invalid_weights_rejected(self):
   self.terms[0]['criteria'][0]['weight_bps']=5000
   with self.assertRaises(fake.UserError):self.c.create_grant('bad','Title',B,json.dumps(self.terms),'["example.org"]',1100)

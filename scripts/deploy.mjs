@@ -1,0 +1,14 @@
+import {createClient} from 'genlayer-js';import {studionet} from 'genlayer-js/chains';import {privateKeyToAccount} from 'viem/accounts';import {TransactionStatus,TransactionHashVariant} from 'genlayer-js/types';import fs from 'node:fs/promises';import {createHash} from 'node:crypto';
+const keys=JSON.parse(await fs.readFile('/tmp/grantproof-demo-keys.json','utf8'));
+const client=createClient({chain:studionet,account:privateKeyToAccount(keys.funder)});
+const code=await fs.readFile('contracts/grant_proof.py','utf8');
+const hash=await client.deployContract({code,args:[60,60,300,3600]});console.log('deployment submitted',hash);
+await fs.writeFile('/tmp/grantproof-final-deployment-hash',hash);
+const r=await client.waitForTransactionReceipt({hash,status:TransactionStatus.FINALIZED,retries:200,interval:3000});
+if(r.consensus_data?.leader_receipt?.[0]?.execution_result!=='SUCCESS'&&r.txExecutionResultName!=='FINISHED_WITH_RETURN')throw Error('Deployment failed');
+const address=r.to_address||r.recipient;
+const config={network:'Studionet',chainId:61999,rpc:'https://studio.genlayer.com/api',address,deploymentTx:hash,responseSeconds:60,challengeSeconds:60,revisionSeconds:300,resolutionSeconds:3600,sourceSha256:createHash('sha256').update(code).digest('hex')};
+await fs.writeFile('public/deployment.json',JSON.stringify(config,null,2));
+await fs.rename('docs/live-demo.json','docs/superseded-demo.json');const old=JSON.parse(await fs.readFile('docs/superseded-demo.json','utf8'));
+const fresh={grantId:'grantproof-live-v1-'+Date.now(),funder:old.funder,builder:old.builder,transactions:[],network:config.network,contract:address};await fs.writeFile('docs/live-demo.json',JSON.stringify(fresh,null,2));
+console.log('finalized deployment',JSON.stringify(config));console.log('config',await client.readContract({address,functionName:'get_config',args:[],transactionHashVariant:TransactionHashVariant.LATEST_FINAL}));

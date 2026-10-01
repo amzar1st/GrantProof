@@ -1,1 +1,12 @@
-{"network":"Studionet","chainId":61999,"rpc":"https://studio.genlayer.com/api","address":"0x0f860aF227eCd8fB8D54c01C2b31E5C29B761797","deploymentTx":"0x383443a61732c4bd79a5855264b2d5339d5e1a89106babdf87eca160bb6db8bd","responseSeconds":60,"challengeSeconds":60,"revisionSeconds":300,"resolutionSeconds":3600}
+{
+  "network": "Studionet",
+  "chainId": 61999,
+  "rpc": "https://studio.genlayer.com/api",
+  "address": "0x54B09978AA69636073b147F1CD1FbB046524202C",
+  "deploymentTx": "0x19ba4e91ade9bc2462b0a778e35f529b358fdb54d677e2726829ee5e3d36ba63",
+  "responseSeconds": 60,
+  "challengeSeconds": 60,
+  "revisionSeconds": 300,
+  "resolutionSeconds": 3600,
+  "sourceSha256": "ddbeb4cba87c1637edde7d53921079cf3a809f5141de41eed233bcd87fa491a0"
+}

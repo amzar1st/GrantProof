@@ -1,0 +1,8 @@
+import {createClient} from 'genlayer-js';import {studionet} from 'genlayer-js/chains';import {privateKeyToAccount} from 'viem/accounts';import {TransactionStatus,TransactionHashVariant} from 'genlayer-js/types';import fs from 'node:fs/promises';
+const r=JSON.parse(await fs.readFile('docs/superseded-demo.json','utf8')),keys=JSON.parse(await fs.readFile('/tmp/grantproof-demo-keys.json','utf8'));const c=createClient({chain:studionet,account:privateKeyToAccount(keys.funder)});
+const state=async()=>JSON.parse(await c.readContract({address:r.contract,functionName:'get_grant',args:[r.grantId],transactionHashVariant:TransactionHashVariant.LATEST_FINAL}));
+let g=await state();console.log('old state',g.status,g.revision_deadline);
+const method=g.status==='REVIEWED'?'finalize':g.status==='REVISION'?'resolve_timeout':g.status==='REFUNDED'?'withdraw':null;if(!method)throw Error('Unknown recovery state');
+const hash=await c.writeContract({address:r.contract,functionName:method,args:method==='withdraw'?[]:[r.grantId],value:0n});console.log('submitted',method,hash);
+const receipt=await c.waitForTransactionReceipt({hash,status:TransactionStatus.FINALIZED,retries:200,interval:3000});if(receipt.consensus_data?.leader_receipt?.[0]?.execution_result!=='SUCCESS')throw Error('Recovery failed');
+r.transactions.push({method,hash,status:'FINALIZED',execution:'SUCCESS'});r.state=await state();r.note='Superseded test deployment used the wrong HTTP response status attribute. Its evidence review safely withheld payment. Final app uses the corrected deployment.';await fs.writeFile('docs/superseded-demo.json',JSON.stringify(r,null,2));console.log(r.state.status,r.state.revision_deadline);

@@ -169,6 +169,7 @@ class GrantProof(gl.Contract):
         g['evidence'] = []
         g['decision'] = None
         g['challenged'] = False
+        g['challenge_note'] = ''
         g['round'] += 1
         g['response_deadline'] = self._now() + int(self.response_seconds)
         require(g['response_deadline'] + int(self.challenge_seconds) < g['terminal_at'], 'Not enough time for review')
@@ -207,7 +208,7 @@ class GrantProof(gl.Contract):
                     response = gl.nondet.web.get(e['url'])
                     body = response.body
                     status = 'FETCH_FAILED'
-                    if response.status_code == 200 and 0 < len(body) <= 1000000:
+                    if response.status == 200 and 0 < len(body) <= 1000000:
                         status = 'HASH_MISMATCH' if e['sha256'] and hashlib.sha256(body).hexdigest() != e['sha256'] else 'OK'
                     checks.append({'url': e['url'], 'side': e['side'], 'status': status})
                     if status == 'OK':

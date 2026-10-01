@@ -1,0 +1,199 @@
+{
+  "grantId": "grantproof-live-1790760908915",
+  "funder": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+  "builder": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+  "transactions": [
+    {
+      "method": "create_grant",
+      "hash": "0xc2469c8d0a8ce2fe77d3a0bd8c2b5157beb9fcd9ad163155acdb4c5e50ea3c26",
+      "account": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "fund_grant",
+      "hash": "0xfb68887c99821cb1bbf8fe7f6dedc598f825cafbe411092b23ebfca36b7ae70e",
+      "account": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+      "value": "10000000000000000",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "accept_grant",
+      "hash": "0x5bd7105c59239cfd0cc6bbe359ea93edb3ff68eeb5ef4b4cb9a20f5e8dd2e106",
+      "account": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "submit_milestone",
+      "hash": "0x9bd75c5e80d2508028ee31f665995722e3906013c04eed9a8d104b80811f6729",
+      "account": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "submit_evidence",
+      "hash": "0x3fa00f65b2e855abb7ff8eac4873bcd441309b1e929e269fe49ac1f9404f1318",
+      "account": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "validator_review",
+      "hash": "0x0fcc53c397162b3356387024c28fd044261c49b67a0a10c02f22ac6730d27b6a",
+      "account": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "finalize",
+      "hash": "0xf957e3c2b6392e13c0226fc42795f4ca7b3168d8b4fd178957de2e510fd2b00f",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "method": "resolve_timeout",
+      "hash": "0x168116912120ded8716d2d31b44c24f4f294c3d16b7bf8a05badd18fc71da95e",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "method": "withdraw",
+      "hash": "0xe64e044cef0d1bc39d9b8c55951c9a61f6adad4fbc0cdf1f2dea6b1337ccca53",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    }
+  ],
+  "network": "Studionet",
+  "contract": "0x0f860aF227eCd8fB8D54c01C2b31E5C29B761797",
+  "milestones": [
+    {
+      "title": "Publish the GrantProof funding guide",
+      "amount_wei": "10000000000000000",
+      "due_at": 1790775941,
+      "criteria": [
+        {
+          "text": "Publish a public Markdown documentation page in amzar1st/GrantProof that explicitly lists all five GrantProof verdict names.",
+          "weight_bps": 5000
+        },
+        {
+          "text": "That same page explains immutable weighted escrow payout and the resolve_timeout deadline refund action.",
+          "weight_bps": 5000
+        }
+      ]
+    }
+  ],
+  "state": {
+    "acceptance_deadline": 1790768655,
+    "active": 0,
+    "allowed_hosts": [
+      "raw.githubusercontent.com",
+      "github.com"
+    ],
+    "builder": "0xb1864673d2a5b827f5dbe133a81243d2be43c06c",
+    "challenge_deadline": 1790761811,
+    "challenged": false,
+    "decision": {
+      "checks": [
+        {
+          "side": "builder",
+          "status": "FETCH_FAILED",
+          "url": "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+        }
+      ],
+      "citations": [],
+      "completed": [],
+      "payout_bps": 0,
+      "reason": "No retrievable, hash-valid builder evidence. Escrow remains locked until revision or refund deadline.",
+      "verdict": "INSUFFICIENT_EVIDENCE"
+    },
+    "escrow": "0",
+    "evidence": [
+      {
+        "note": "Public repository documentation guide",
+        "sha256": "",
+        "side": "builder",
+        "url": "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+      }
+    ],
+    "funder": "0x9919bb4ab40333723fe7dbf7679afb900c73e003",
+    "history": [
+      {
+        "at": 1790761455,
+        "event": "CREATED"
+      },
+      {
+        "amount": "10000000000000000",
+        "at": 1790761541,
+        "event": "FUNDED"
+      },
+      {
+        "at": 1790761577,
+        "event": "ACCEPTED"
+      },
+      {
+        "at": 1790761751,
+        "decision": {
+          "checks": [
+            {
+              "side": "builder",
+              "status": "FETCH_FAILED",
+              "url": "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+            }
+          ],
+          "citations": [],
+          "completed": [],
+          "payout_bps": 0,
+          "reason": "No retrievable, hash-valid builder evidence. Escrow remains locked until revision or refund deadline.",
+          "verdict": "INSUFFICIENT_EVIDENCE"
+        },
+        "event": "REVIEWED",
+        "round": 1
+      },
+      {
+        "amount": "10000000000000000",
+        "at": 1790765077,
+        "event": "TIMEOUT_REFUND"
+      }
+    ],
+    "milestones": [
+      {
+        "amount_wei": "10000000000000000",
+        "criteria": [
+          {
+            "text": "Publish a public Markdown documentation page in amzar1st/GrantProof that explicitly lists all five GrantProof verdict names.",
+            "weight_bps": 5000
+          },
+          {
+            "text": "That same page explains immutable weighted escrow payout and the resolve_timeout deadline refund action.",
+            "weight_bps": 5000
+          }
+        ],
+        "due_at": 1790775855,
+        "status": "PENDING",
+        "title": "Publish the GrantProof funding guide"
+      }
+    ],
+    "response_deadline": 1790761672,
+    "revised": false,
+    "revision_deadline": 1790762710,
+    "round": 1,
+    "status": "REFUNDED",
+    "summary": "Published the public documentation guide. Only the documentation criteria are claimed, not a production beta or user count.",
+    "terminal_at": 1790779455,
+    "title": "GrantProof public documentation proof",
+    "total": "10000000000000000"
+  },
+  "note": "Superseded test deployment used the wrong HTTP response status attribute. Its evidence review safely withheld payment. Final app uses the corrected deployment."
+}

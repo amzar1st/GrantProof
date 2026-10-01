@@ -1,0 +1,229 @@
+{
+  "grantId": "grantproof-live-v1-1790762140947",
+  "funder": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+  "builder": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+  "transactions": [
+    {
+      "method": "create_grant",
+      "hash": "0xb2c2967885e3cd5d9490822f6c2aa0ebc2cf871d7babafb67afbb364c42c001a",
+      "account": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "fund_grant",
+      "hash": "0x1ac52676a1dace6f3890375eaef48d63b6d0b16d9ef3ad956bf00c8937035844",
+      "account": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+      "value": "10000000000000000",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "accept_grant",
+      "hash": "0xe47a927f8261646c7a893c59c7bfd21abaf9d95d34d2fc4c19c1c6ac67963508",
+      "account": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "submit_milestone",
+      "hash": "0xc1514abe299691fd932a5aae8a8ba7d6d546b85d6230492301ccdffd9694d884",
+      "account": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "submit_evidence",
+      "hash": "0xb892f2b5e9399277c11eeb443c7c4b1318fbb682b7663e4f09e56c2f6340e0b8",
+      "account": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "validator_review",
+      "hash": "0x8fc58df2e8195c6bcc3c15e8c995e864479a174aec9b0a5f75ee0c6bbfb9c86e",
+      "account": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "finalize",
+      "hash": "0x20d6308f5137cf72c63389270bd562b29e1532009ad39d1f387efef648d5144f",
+      "account": "0x9919Bb4Ab40333723fe7dBf7679AFB900C73e003",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    },
+    {
+      "method": "withdraw",
+      "hash": "0x1671f75ce453c7c5596082fe7a7fc1540b2c721d69a484194891dbe9af758a67",
+      "account": "0xb1864673d2A5B827f5dBE133a81243D2BE43c06C",
+      "value": "0",
+      "status": 7,
+      "execution": "SUCCESS",
+      "result": 6
+    }
+  ],
+  "network": "Studionet",
+  "contract": "0x54B09978AA69636073b147F1CD1FbB046524202C",
+  "milestones": [
+    {
+      "title": "Publish the GrantProof funding guide",
+      "amount_wei": "10000000000000000",
+      "due_at": 1790776570,
+      "criteria": [
+        {
+          "text": "Publish a public Markdown documentation page in amzar1st/GrantProof that explicitly lists all five GrantProof verdict names.",
+          "weight_bps": 5000
+        },
+        {
+          "text": "That same page explains immutable weighted escrow payout and the resolve_timeout deadline refund action.",
+          "weight_bps": 5000
+        }
+      ]
+    }
+  ],
+  "state": {
+    "acceptance_deadline": 1790769370,
+    "active": 1,
+    "allowed_hosts": [
+      "raw.githubusercontent.com",
+      "github.com"
+    ],
+    "builder": "0xb1864673d2a5b827f5dbe133a81243d2be43c06c",
+    "challenge_deadline": 1790762507,
+    "challenge_note": "",
+    "challenged": false,
+    "decision": {
+      "checks": [
+        {
+          "side": "builder",
+          "status": "OK",
+          "url": "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+        }
+      ],
+      "citations": [
+        "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+      ],
+      "completed": [
+        0,
+        1
+      ],
+      "payout_bps": 10000,
+      "reason": "The page at https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md was successfully fetched (status OK) from the public repository amzar1st/GrantProof. It is a Markdown file located at docs/demo-deliverable.md.\n\nCriterion 0: The page explicitly lists all five required GrantProof verdict names under the '## Five verdicts' heading: MILESTONE_COMPLETED, PARTIALLY_COMPLETED, MILESTONE_FAILED, REVISION_REQUIRED, and INSUFFICIENT_EVIDENCE. All five are present and correctly named. This criterion is satisfied.\n\nCriterion 1: The same page explains immutable weighted escrow payout under '## Escrow rules': it states that the funder defines immutable milestone amounts, criterion weights totaling 10,000 basis points, and that funds remain in escrow until validators review evidence, with complete milestones receiving their allocation and partial milestones receiving the weighted share with the remainder credited to the funder. It also explains the resolve_timeout deadline refund action under '## Deadline refunds': it explicitly names resolve_timeout as the recovery mechanism when applicable deadlines (missing acceptance, missing delivery, expired revision, or stalled consensus) have expired, and describes the outcome of unresolved rounds. Both required concepts are addressed on the same page. This criterion is satisfied.\n\nBoth criteria are proved by the successfully fetched public Markdown documentation page in the correct repository.",
+      "verdict": "MILESTONE_COMPLETED"
+    },
+    "escrow": "0",
+    "evidence": [],
+    "funder": "0x9919bb4ab40333723fe7dbf7679afb900c73e003",
+    "history": [
+      {
+        "at": 1790762171,
+        "event": "CREATED"
+      },
+      {
+        "amount": "10000000000000000",
+        "at": 1790762206,
+        "event": "FUNDED"
+      },
+      {
+        "at": 1790762242,
+        "event": "ACCEPTED"
+      },
+      {
+        "at": 1790762447,
+        "decision": {
+          "checks": [
+            {
+              "side": "builder",
+              "status": "OK",
+              "url": "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+            }
+          ],
+          "citations": [
+            "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+          ],
+          "completed": [
+            0,
+            1
+          ],
+          "payout_bps": 10000,
+          "reason": "The page at https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md was successfully fetched (status OK) from the public repository amzar1st/GrantProof. It is a Markdown file located at docs/demo-deliverable.md.\n\nCriterion 0: The page explicitly lists all five required GrantProof verdict names under the '## Five verdicts' heading: MILESTONE_COMPLETED, PARTIALLY_COMPLETED, MILESTONE_FAILED, REVISION_REQUIRED, and INSUFFICIENT_EVIDENCE. All five are present and correctly named. This criterion is satisfied.\n\nCriterion 1: The same page explains immutable weighted escrow payout under '## Escrow rules': it states that the funder defines immutable milestone amounts, criterion weights totaling 10,000 basis points, and that funds remain in escrow until validators review evidence, with complete milestones receiving their allocation and partial milestones receiving the weighted share with the remainder credited to the funder. It also explains the resolve_timeout deadline refund action under '## Deadline refunds': it explicitly names resolve_timeout as the recovery mechanism when applicable deadlines (missing acceptance, missing delivery, expired revision, or stalled consensus) have expired, and describes the outcome of unresolved rounds. Both required concepts are addressed on the same page. This criterion is satisfied.\n\nBoth criteria are proved by the successfully fetched public Markdown documentation page in the correct repository.",
+          "verdict": "MILESTONE_COMPLETED"
+        },
+        "event": "REVIEWED",
+        "round": 1
+      },
+      {
+        "at": 1790764961,
+        "builder_credit": "10000000000000000",
+        "event": "SETTLED",
+        "funder_credit": "0",
+        "milestone": 0
+      }
+    ],
+    "milestones": [
+      {
+        "amount_wei": "10000000000000000",
+        "criteria": [
+          {
+            "text": "Publish a public Markdown documentation page in amzar1st/GrantProof that explicitly lists all five GrantProof verdict names.",
+            "weight_bps": 5000
+          },
+          {
+            "text": "That same page explains immutable weighted escrow payout and the resolve_timeout deadline refund action.",
+            "weight_bps": 5000
+          }
+        ],
+        "decision": {
+          "checks": [
+            {
+              "side": "builder",
+              "status": "OK",
+              "url": "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+            }
+          ],
+          "citations": [
+            "https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md"
+          ],
+          "completed": [
+            0,
+            1
+          ],
+          "payout_bps": 10000,
+          "reason": "The page at https://raw.githubusercontent.com/amzar1st/GrantProof/main/docs/demo-deliverable.md was successfully fetched (status OK) from the public repository amzar1st/GrantProof. It is a Markdown file located at docs/demo-deliverable.md.\n\nCriterion 0: The page explicitly lists all five required GrantProof verdict names under the '## Five verdicts' heading: MILESTONE_COMPLETED, PARTIALLY_COMPLETED, MILESTONE_FAILED, REVISION_REQUIRED, and INSUFFICIENT_EVIDENCE. All five are present and correctly named. This criterion is satisfied.\n\nCriterion 1: The same page explains immutable weighted escrow payout under '## Escrow rules': it states that the funder defines immutable milestone amounts, criterion weights totaling 10,000 basis points, and that funds remain in escrow until validators review evidence, with complete milestones receiving their allocation and partial milestones receiving the weighted share with the remainder credited to the funder. It also explains the resolve_timeout deadline refund action under '## Deadline refunds': it explicitly names resolve_timeout as the recovery mechanism when applicable deadlines (missing acceptance, missing delivery, expired revision, or stalled consensus) have expired, and describes the outcome of unresolved rounds. Both required concepts are addressed on the same page. This criterion is satisfied.\n\nBoth criteria are proved by the successfully fetched public Markdown documentation page in the correct repository.",
+          "verdict": "MILESTONE_COMPLETED"
+        },
+        "due_at": 1790776570,
+        "status": "MILESTONE_COMPLETED",
+        "title": "Publish the GrantProof funding guide"
+      }
+    ],
+    "response_deadline": 1790762337,
+    "revised": false,
+    "round": 1,
+    "status": "COMPLETED",
+    "summary": "Published the public documentation guide. Only the documentation criteria are claimed, not a production beta or user count.",
+    "terminal_at": 1790780170,
+    "title": "GrantProof public documentation proof",
+    "total": "10000000000000000"
+  },
+  "builderCredit": "10000000000000000",
+  "builderBalance": "30010000000000000000",
+  "accounting": {
+    "escrow": "0",
+    "withdrawable": "0"
+  }
+}
